@@ -2,6 +2,7 @@ import './Quiz.css';
 import { useEffect, useState } from "react";
 // import questions from './questions.json'
 import axios from 'axios';
+import { baseUrl } from './http/http-config';
  
 export default function Quiz({ getMarks ,completed,getLength}) {
   let questions = []
@@ -10,7 +11,7 @@ export default function Quiz({ getMarks ,completed,getLength}) {
   const [QueueQuestion, setQueueQuestion] = useState([...questions]);
   useEffect(()=>{
     getLength(QueueQuestion.length)
-    axios.get('http://localhost:8200/questions').then((result)=>{
+    axios.get(baseUrl+'/questions').then((result)=>{
     console.log(result.data);
     let data = []
     result.data.forEach(element => {
@@ -38,7 +39,7 @@ export default function Quiz({ getMarks ,completed,getLength}) {
 
   function handleNext() {
     // const score = selectedOption === currentQuestion.answer ? 1 : 0;
-    const score =selectedOption.charAt(0) == currentQuestion.answer.charAt(8) ? 1 : 0;
+    const score =selectedOption.charAt(0) === currentQuestion.answer.charAt(8) ? 1 : 0;
     console.log(selectedOption, currentQuestion);
     console.log(selectedOption.charAt(0), currentQuestion.answer.charAt(8));
     getMarks(score);

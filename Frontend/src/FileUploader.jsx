@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import Home from "./Home";
+import { baseUrl } from "./http/http-config";
 
  
 export class FileUploader extends Component {
@@ -29,17 +30,21 @@ export class FileUploader extends Component {
             this.state.selectedFile.name
         );
         console.log(this.state.selectedFile);
-        axios.post("http://localhost:8200/uploadFile", formData).then((res)=>{
+        axios.post(baseUrl+"/uploadFile", formData).then((res)=>{
             this.setState()
-            console.log(this.state.uploaded);
+            alert('File uploading success')
         }).catch((err)=>{
+            alert('Please upload a file first')
             console.log(err);
         })
     };
 
     handleShow(){
-        axios.get('http://localhost:8200/loadQuestions').then((res)=>{
+        axios.get(baseUrl+'/loadQuestions').then((res)=>{
             document.getElementById('questionPlaceholder').innerHTML = res.data;
+        }).catch((error)=>{
+            alert('Please upload a file first')
+            console.log(error);
         })
     }
  
