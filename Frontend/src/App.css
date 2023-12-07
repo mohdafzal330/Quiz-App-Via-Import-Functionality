@@ -1,0 +1,18 @@
+/* App Component */
+.app-container {      
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px;
+  
+  }
+  
+  .app-container h1 {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  /* You can style the h1 element or any other specific elements within the App component here. */
+  
+  
+  

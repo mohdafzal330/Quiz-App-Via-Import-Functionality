@@ -1,0 +1,1 @@
+This folder contains the images of questions, equations and formulae
